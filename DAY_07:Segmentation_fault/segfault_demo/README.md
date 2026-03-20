@@ -14,4 +14,5 @@ This leads to invalid memory acces.
 -Program recieved SIGSEGV
 ![image alt](https://github.com/derminn/C-PROGRAMMING-/blob/2325a95e93f12102eecd673bf2345a98e29c6e54/DAY_07%3ASegmentation_fault/segfault_demo/run.png)
 
-- Backtrace shows crash at line 6 in main()
+-Backtrace shows crash at line 6 in main()
+![image alt]()
