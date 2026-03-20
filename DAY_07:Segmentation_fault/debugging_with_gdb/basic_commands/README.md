@@ -1,0 +1,4 @@
+- Learned causes of segmentation faults
+- Debugged using GDB (bt, print, list)
+- Analyzed multi-function crash
+- Implemented fix for NULL pointer handling
