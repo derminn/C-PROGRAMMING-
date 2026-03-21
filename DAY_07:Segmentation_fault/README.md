@@ -1,7 +1,6 @@
 # Day 7 — Segmentation Faults, Memory Layout & Signal Handling
 
-
-## ->Topics Covered
+## Topics covered
 
 * Segmentation faults (SIGSEGV)
 * Pointer misuse and undefined behavior
@@ -11,21 +10,21 @@
 
 ---
 
-## ->Tasks Performed
+## Tasks Performed
 
 ### Task 1 — NULL Pointer Crash (Beginner)
 
 **File:** `segfault_demo.c`
 
-* Demonstrated crash using NULL pointer dereference
-* Used GDB to:
+* Demonstrated segmentation fault using NULL pointer dereference
+* Debugged using GDB:
 
-  * Run program
-  * Identify crash location using `bt`
-  * Inspect pointer value (`0x0`)
+  * `run` to execute program
+  * `bt` to locate crash
+  * `print` to inspect pointer value (`0x0`)
 
 **Key Learning:**
-Dereferencing a NULL pointer leads to an immediate segmentation fault because address `0x0` is invalid.
+Dereferencing a NULL pointer results in an immediate crash because it accesses invalid memory (address `0x0`).
 
 ---
 
@@ -43,67 +42,68 @@ Implemented a menu-driven program to trigger multiple memory violations:
 
 **Key Learning:**
 
-* Different memory bugs behave differently
-* Some crash immediately, others cause silent corruption
-* These bugs are the root of many real-world vulnerabilities
+* Memory bugs behave differently depending on context
+* Some cause immediate crashes, others silently corrupt memory
+* These issues are common sources of real-world vulnerabilities
 
 ---
 
-### Task 5 — Signal Handler (Advanced)
+### Task 3 — Signal Handler (Advanced)
 
 **File:** `signal_handler.c`
 
-* Implemented custom handler for `SIGSEGV`
+* Implemented a custom handler for `SIGSEGV`
 * Used `signal()` to intercept crashes
-* Printed diagnostic message using async-signal-safe functions
+* Printed diagnostic message using async-signal-safe functions (`write`, `_exit`)
 
 **Key Learning:**
 
-* Signals are OS-level notifications
-* Programs can intercept crashes before termination
-* Used in real-world crash reporting systems
+* Signals are OS-level notifications for abnormal events
+* Programs can intercept and handle crashes before termination
+* This technique is used in production crash reporting systems
 
 ---
 
-## ->Debugging Tools Used
+## Debugging Tools Used
 
 ### GDB Commands
 
-* `run` → start program
-* `bt` → backtrace (find crash location)
+* `run` → execute the program
+* `bt` → show backtrace (crash location)
 * `list` → view source code
-* `print` → inspect variables
+* `print` → inspect variable values
 
 ---
 
-## -> Core Concepts Learned
+## Core Concepts Learned
 
 ### Memory Layout
 
-* Stack → local variables, grows downward
-* Heap → dynamic memory, grows upward
-* Data segment → global variables
+* **Stack** → stores local variables, grows downward
+* **Heap** → dynamic memory allocation, grows upward
+* **Data Segment** → stores global variables
 
 ### Common Memory Errors
 
-* NULL dereference
-* Wild pointer
-* Buffer/heap overflow
+* NULL pointer dereference
+* Wild pointer access
+* Heap/Buffer overflow
 * Use-after-free
 * Stack overflow
 
 ### Signals
 
-* OS sends signals like `SIGSEGV` on invalid access
-* Handlers can intercept and log crashes
+* OS sends signals like `SIGSEGV` on invalid memory access
+* Signal handlers allow controlled crash handling and logging
 
 ---
 
-## -> Key Takeaways
+## Key Takeaways
 
 * Memory safety is critical in C programming
-* Undefined behavior can lead to unpredictable results
-* GDB is essential for debugging low-level issues
-* Understanding memory layout improves problem-solving
-* Signal handling enables controlled crash reporting
+* Undefined behavior leads to unpredictable results
+* GDB is essential for low-level debugging
+* Understanding memory layout improves debugging skills
+* Signal handling enables controlled and informative crash reporting
 
+##
